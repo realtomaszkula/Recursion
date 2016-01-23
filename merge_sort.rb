@@ -1,13 +1,21 @@
 def merge_sort(arr)
-  if arr.size > 1
-    b = arr.slice(0, arr.size/2)
-    c = arr.slice(arr.size/2, arr.size)
-    p b, c
-    merge_sort(b)
-    merge_sort(c)
+  return arr if arr.size == 1
+  mid = arr.size / 2
+  left = merge_sort arr[0...mid]
+  right = merge_sort arr[mid...arr.size]
+  merge left, right
+end
+
+
+def merge(left, right)
+  result = []
+  until left.empty? || right.empty?
+    result << (left.first <= right.first ? left.shift : right.shift)
   end
+  result + left + right
 end
 
 
 arr = [108, 15, 50, 4, 8, 42, 23, 16]
-merge_sort(arr)
+p merge_sort(arr)
+
