@@ -1,7 +1,11 @@
 def merge_sort(arr)
-  b = arr.slice(0, arr.size/2)
-  c = arr.slice(arr.size/2, arr.size)
-  p b, c
+  if arr.size > 1
+    b = arr.slice(0, arr.size/2)
+    c = arr.slice(arr.size/2, arr.size)
+    p b, c
+    merge_sort(b)
+    merge_sort(c)
+  end
 end
 
 
